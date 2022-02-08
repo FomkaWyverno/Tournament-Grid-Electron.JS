@@ -1,0 +1,11 @@
+@import "variables";
+@import "default";
+
+@import "header";
+@import "main";
+@import "grid";
+
+.container {
+    max-width: 1780px;
+    margin: 0 auto;
+}

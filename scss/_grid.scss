@@ -1,0 +1,137 @@
+.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    font-family: 'Jura';
+    text-align: center;
+    &__nameRound {
+        color: #fff;
+        font-size: 1.8em;
+    }
+    &__round + &__round {
+        margin-top: 100px;
+    }
+    &__resultsRound {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__resultRound {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+    }
+    &__resultRound + &__resultRound {
+        margin-left: 80px;
+    }
+    &__lines {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 109px;
+        bottom: -105px;
+        padding: 0 85px;
+        > span {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: #585858;
+            &::after, &::before {
+                position: absolute;
+                content: '';
+                width: 215px;
+                top: -40px;
+                height: 40px;
+                border-left: 2px solid #585858;
+                border-right: 2px solid #585858;
+            }
+            &::after {
+                right: 0;
+            }
+            &::before {
+                left: 0;
+            }
+            > span {
+                position: absolute;
+                width: 2px;
+                height: 50px;
+                background-color: #585858;
+            }
+        }
+    }
+    .final &__lines span {
+        &::after {
+            content: none;
+        }
+        &::before {
+            width: 100%;
+        }
+    }
+    &__match {
+        display: flex;
+    }
+    &__match + &__match {
+        margin-left: 40px;
+    }
+    &__team {
+        padding: 20px;
+        background-color: $grid-team-color;
+        border-bottom: 2px solid #fff;
+        transition: border-color .4s ease,
+                    transform .4s ease;
+        &:hover {
+            border-color: $title-border;
+            transform: translateY(-5px);
+        }
+    }
+    &__team + &__team {
+        margin-left: 20px;
+    }
+    &__player {
+        position: relative;
+        min-height: 23px;
+        width: 144px;
+        text-align: start;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #fff;
+        font-size: 1.2em;
+    }
+    &__player + &__player {
+        padding-top: 10px;
+        margin-top: 10px;
+        border-top: 1.5px solid #585858;
+    }
+    &__nick {  
+        color: #fff;
+    }
+    &__inputForNick {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+
+        padding: 0;
+        opacity: 0;
+        z-index: -1;
+        font-size: inherit;
+        color: inherit;
+        outline: 0;
+        border: 0;
+        background: none;
+    }
+}
+
+
+.round3 {
+    .grid__match + .grid__match {
+        margin-left: 515px;
+    }
+}

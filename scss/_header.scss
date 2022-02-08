@@ -1,0 +1,135 @@
+.header {
+    height: 68px; // 68px and 200px
+    background-color: #141414;
+    border-bottom: 2px solid #302f2f;
+    
+    &__titleStart {
+        position: fixed;
+        width: 100vw;
+        height: 200vh;
+        background-color: #000;
+        transition: opacity 2s ease;
+        z-index: 2;
+    }
+    &__line {
+        align-self: flex-end;
+        &--left {
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            left: -5%;
+            background-color: #fff;
+            transition: width 2.5s ease;
+        }
+        &--right {
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            right: -5%;
+            background-color: #fff;
+            transition: width 2.5s ease;
+        }
+    }
+    &__titleBox {
+        
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;    
+        
+        width: 100%;
+        height: 100%;
+        
+    }
+    &__titleSvg {
+        position: absolute;
+        left: calc(-1 * 5px);
+        top: calc(-1 * 5px);
+        width: calc(100% + 5px *2);
+        height: calc(100% + 5px *2);
+    }
+    &__titleShape {
+        width: 100%;
+        height: 100%;
+        fill: transparent;
+        stroke: $title-border;
+        stroke-opacity: 0;
+        stroke-width: 10px;
+        stroke-dasharray: 100,900;
+        stroke-dashoffset: -440;
+        transition: stroke-width .5s ease 3s,
+                    stroke-dasharray 1s ease 2s,
+                    stroke-dashoffset 1s ease 2s,
+                    stroke-opacity 1s ease 1s;
+    }
+    .fomka {
+        stroke-dashoffset: -445;
+    }
+    &__title {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        margin-top: 25%;
+        align-self: flex-start;
+
+        padding: 15px;
+        transition: margin 1s ease;
+        z-index: 3;
+        cursor: default;
+        
+        &::after {
+            position: absolute;
+            content: '';
+            width: 0%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-color: #fff;
+            z-index: -1;
+            transition: width 1s ease;
+        }
+        &::before {
+            position: absolute;
+            content: '';
+            // opacity: 0;
+            
+        }
+    }
+    .start::after {
+        width: 100%;
+    }
+    .ready {
+        margin: 5px auto 0; // 5px and 125px
+        ~ .header__titleStart {
+            opacity: 0;
+        }
+        ~ .header__line {
+            .header__line {
+                &--right {
+                    width: 60%;
+                }
+                &--left {
+                    width: 60%;
+                }
+            }
+        }
+        .header__titleSvg {
+            .header__titleShape {
+                stroke-width: 5px;
+                stroke-dashoffset: 0;
+                stroke-dasharray: 705;
+                stroke-opacity: 1;
+            }
+            .fomka {
+                stroke-dasharray: 715;
+            }
+        }
+    }
+    &__container {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: flex-start;
+        height: 100%;
+    }
+}

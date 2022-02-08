@@ -1,0 +1,38 @@
+{
+  "name": "TournamentGrid",
+  "productName": "Tournament Grid",
+  "version": "1.0.1",
+  "description": "Создание турнирных сеток.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "Tournament Grid",
+    "win": {
+      "target": ["nsis"],
+      "icon": "tournament.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "uninstallDisplayName":"TournamentGrid",
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "tournament.ico",
+      "uninstallerIcon": "tournament.ico"
+    }
+  },
+  "author": "Fomka_Wyverno",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.1.6",
+    "electron-builder": "^22.11.7",
+    "electron-packager": "^15.2.0"
+  },
+  "dependencies": {
+    "ws": "^8.0.0"
+  },
+  "optionalDependencies": {
+    "utf-8-validate": "^5.0.5"
+  }
+}

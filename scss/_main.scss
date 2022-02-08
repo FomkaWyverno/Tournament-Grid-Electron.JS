@@ -1,0 +1,483 @@
+.noScroll {
+    overflow: hidden;
+}
+.containerMain {
+    height: 100%;
+}
+.main {
+    font-size: 1.5em;
+    font-family: 'Jura', sans-serif;
+    color: #fff;    
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__content {
+        display: flex;
+        position: relative;
+        width: max-content;
+        padding: 25px 50px 70px;
+        flex-direction: column;
+        align-items: center;
+        background-color: #1d1d1d;
+    }
+    &__titleBox {
+        margin-bottom: 80px;
+    }
+    &__title {
+        font-size: 2em;
+        font-weight: 700;
+
+
+
+        // Выключение выделение текста.
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -khtml-user-select: none;    /* Konqueror */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+    }
+    &__field + &__field {
+        margin-top: 100px;
+    }
+    &__field {
+        position: relative;
+        //cursor: pointer;
+        color: $placeholder-color;
+        width: 100%;
+        z-index: 1;
+    }
+    &__input {
+        outline: 0;
+        background: none;
+        border: none;
+        width: 100%;
+        border-bottom: 2px solid $border-input;
+        color: $border-input;
+
+        transition: color .3s ease,
+                    border-color .4s ease,
+                    box-shadow .7s ease;
+
+        &:focus {
+            color: #bdbdbd;
+            border-color: $title-border;
+            box-shadow: 0 20px 20px -12px $title-border;
+            ~ .main__label {
+                bottom: 30px;
+                left: 0;
+                font-size: 1em;
+                color: $title-border;
+            }
+            ~ .main__counter {
+                left: auto;
+                
+                bottom: -40px;
+            }
+        }
+
+        &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                margin: 0;
+            }
+    }
+    .error .main__input {
+        color: $input-error-color;
+        &:focus {
+            color: $input-error-color;
+            box-shadow: 0 20px 20px -12px $input-error-color;
+            border-color: $input-error-color;
+            ~ .main__label {
+                color: $input-error-color;
+            }
+        }
+    }
+    .click {
+        color: $title-border;
+        box-shadow: 0 15px 15px -12px $title-border;
+        border-color:  $title-border;
+        ~ .main__label {
+            color: $title-border;
+        }
+    }
+    .readyNick {
+        color: $readyNick-color;
+        &:focus {
+            box-shadow: 0 20px 20px -12px $readyNick-color;
+            border-color: $readyNick-color;
+            ~ .main__label {
+                color: $readyNick-color;
+            }
+        }
+    }
+    .valid {
+        ~ .main__label {
+            bottom: 30px;
+            left: 0;
+        }
+        ~ .main__counter {
+            left: auto;
+                
+            bottom: -40px;
+        }
+    }
+    &__label {
+        position: absolute;
+        left: 10px;
+        bottom:2px;
+        font-weight: 300;
+        font-size: 0.8em;
+        z-index: -1;
+        transition: left .3s ease,
+                    bottom .3s ease,
+                    font-size .3s ease,
+                    color .3s ease;
+
+
+        // Выключение выделение текста.
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -khtml-user-select: none;    /* Konqueror */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+    }
+    &__counter {
+        left: auto;
+        right: 0;
+    }
+    &__saveAndStart {
+        position: relative;
+        background: none;
+        border: none;
+        margin-top: 80px;
+        padding: 25px 60px;
+        font-size: 1.2em;
+        font-weight: 500;
+        z-index: 1;
+        color: $button-text-color;
+        cursor: pointer;
+        border: 1px solid $button-border-color;
+        transition: color .3s ease,
+                    border-color .3s ease,
+                    box-shadow .3s ease;
+
+
+        // Выключение выделение текста.
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -khtml-user-select: none;    /* Konqueror */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+        
+        &:hover {
+            color: #fff;
+            border-color: #fff;
+            box-shadow: 0 0 3px #fff;
+        }
+    }
+    &__help {
+        position: absolute;
+        width: 25px;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+        svg {
+            fill: $border-input;
+            transition: fill .4s ease;
+        }
+        &:hover {
+            svg {
+               fill: #fff; 
+            }
+        }
+    }
+    .disable {
+        pointer-events: none;
+        cursor: default;
+    }
+}
+.field {
+    &__arrows {
+        position: absolute;
+        right: 0;
+        top: -25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+    }
+    &__arrow {
+        position: relative;
+        background: none;
+        border: none;
+        cursor: pointer;
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 0;
+            opacity: 0;
+            background-color: $title-border;
+            filter: blur(15px);
+            width: 100%;
+            height: 100%;
+            transform: scale(.7);
+            transition: opacity .7s ease, transform .4s ease;
+        }
+        span {
+            display: block;
+            width: 9px;
+            height: 9px;
+            border-right: 2px solid $border-input;
+            border-top: 2px solid $border-input;
+            transition: color .3s ease;
+        }
+        &:first-child span {
+            transform: rotate(-45deg);
+        }
+        &:last-child span {
+            transform: rotate(135deg);
+        }
+        &:hover {
+            span {
+              border-color: $title-border;
+            }
+            &::before {
+                opacity: 1;
+            }
+        }
+        &:active:before {
+            transform: scale(1.2);
+        }
+    }
+    &__arrows .disabled {
+        z-index: -1;
+        cursor: default;
+        
+    }
+
+}
+.tField {
+    position: relative;
+    &__team {
+        padding: 15px;
+        background-color: $grid-team-color;
+        border-bottom: 2px solid #fff;
+        transition: border-color .4s ease,
+                    transform .4s ease;
+    }
+    .hover {
+        border-color: $title-border;
+        transform: translateY(-5px);
+    }
+    &__player {
+        font-family: 'Jura';
+        font-size: .8em;
+        min-height: 23px;
+        width: 144px;
+    }
+    &__wrapperNick {
+        width: max-content;
+    }
+    &__nick {
+        display: inline-block;
+        white-space: nowrap;
+        position: relative;
+        color: #fff;
+        overflow: hidden;
+
+
+        // Выключение выделение текста.
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -khtml-user-select: none;    /* Konqueror */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+        &::before {
+            display: none;
+            position: absolute;
+            content: '';
+            width: 1.5px;
+            height: 100%;
+            right: 0;
+            top: 0;
+            background-color: #ebe9e9;
+            animation: textCursor 1.5s linear infinite;
+        }
+    }
+    .textCursorActive{
+        &::before {
+            display: block;
+        }
+    }
+    &__cursor {
+        position: absolute;
+        left: 500px;
+        top: 300px;
+        z-index: 2;
+        transition: left 2s ease,
+                    top 2s ease;
+        svg {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        &--hover {
+            display: none;
+        }
+        &--default {
+            display: block;
+        }
+    }
+
+    &__description {
+        position: absolute;
+        z-index: -1;
+        font-size: .6em;
+        //left: calc(100% + 50px);
+        // right: 50%;
+        top: calc(100% + 25px);
+        background-color: $grid-team-color;
+        padding: 10px;
+        border: 2px solid $title-border;
+
+
+        // Выключение выделение текста.
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -khtml-user-select: none;    /* Konqueror */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+
+        p + p {
+            margin-top: 15px;
+        }
+    }
+
+    .hover {
+        .tField__cursor--hover {
+            display: block;
+        }
+        .tField__cursor--default {
+            display: none;
+        }
+    }
+    .moveStage1 {
+        left: 50px;
+        top: 60px;
+        transition: left 2s ease,
+        top 2s ease;
+    }
+    .moveStage2 {
+        left: 30px;
+        top: 85px;
+        transition: left .5s ease,
+        top .5s ease;
+    }
+}
+.help {
+    &__active {
+        svg {
+            fill: #fff; 
+         }
+    }
+    &__field {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        left: 0;
+
+
+
+
+        top: calc(100% + 10px);
+        opacity: 1;
+
+        transition: top 1s ease,
+                    opacity .7s ease;
+    }
+    &__line {
+        display: block;
+        position: relative;
+        width: 2px;
+        height: 20px;
+        background-color: #fff;
+            &::before {
+                display: block;
+                position: absolute;
+                content: '';
+                width: 10px;
+                height: 10px;
+                left: -4px;
+                border-left: 2px solid #fff;
+                border-top: 2px solid #fff;
+                transform: rotate(45deg);
+            }
+    }
+    &__description {
+        color: #fff;
+        font-size: .8em;
+
+
+
+        // Выключение выделение текста.
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;   /* Chrome/Safari/Opera */
+        -khtml-user-select: none;    /* Konqueror */
+        -moz-user-select: none;      /* Firefox */
+        -ms-user-select: none;       /* Internet Explorer/Edge */
+        user-select: none;
+    }
+    &__nextPage {
+        width: 150%;
+        font-size: 0.6em;
+    }
+    &__tournamentField {
+        position: absolute;
+        left: calc(100% + 10px);
+        top: 25px;
+        transition: top 1.5s ease,
+                    opacity .5s ease;
+    }
+    &__hide {
+        top: 300px;
+        opacity: 0;
+    }
+}
+
+@keyframes textCursor {
+    0%,40%,70%,100%{
+        opacity: 1;
+    }
+    50%,60% {
+        opacity: 0;
+    }
+}
+
+@keyframes deleteText {
+    0% {
+        width: 100%;
+    }
+    100% {
+        width: 0%;
+    }
+}
+@keyframes printText {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
